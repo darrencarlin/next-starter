@@ -1,36 +1,192 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Next JS Starter Template
 
-## Getting Started
+The aim of this starter template is to provide the bare minimum boilerplate needed to get started on your next SAAS project.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- Application code with **Next.js (TypeScript)** 👨🏼‍💻
+
+- Styling with **Tailwind CSS** and **shadcn/ui** 🎨
+
+- State Management with **Redux Toolkit** 🗄️
+
+- Subscriptions with **Stripe** 💳
+
+- Authentication with **Lucia Auth** 🔐
+
+- Serverless Postgres Database with **Neon** 🐘
+
+- Database ORM with **Drizzle** 📦
+
+- File Storage with **Cloudflare R2** 📂
+
+- Transactional Emails with **Resend & React Email** 📧
+
+## Directory Structure
+
+```
+  src/
+    actions                                  # Shared Actions
+    app                                      # App Routes
+    components                               # App Components
+    emails                                   # React Email Templates
+    hooks                                    # Global Hooks
+    lib/                                     # Libraries
+      auth                                   # Lucia
+      db                                     # Neon - Drizzle
+      r2                                     # Cloudflare Storage
+      resend                                 # Resend
+      store                                  # Redux Toolkit
+      stripe                                 # Stripe
+      utils.ts                               # Shared Utility Functions
+    constants.ts                             # Share Constants
+    types.ts                                 # Shared Types
+  .env.example
+  .eslintrc.json                             # ESlint config
+  .gitignore                                 # Git ignore
+  .prettierrc                                # Prettierrc config
+  components.json                            # shadcn/ui config
+  drizzle.config.ts                          # Drizzle config
+  next.config.mjs                            # Next JS config
+  package.json
+  postcss.config.mjs                         # PostCSS config
+  README.md
+  tailwind.config.ts                         # Tailwind config
+  tsconfig.json                              # TypeScript config
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Install
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+To get started, clone the repository and run the following commands with your package manager of choice:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+```
+git clone https://github.com/darrencarlin/next-starter.git
+```
 
-## Learn More
+```
+cd next-starter
+bun install
+```
 
-To learn more about Next.js, take a look at the following resources:
+Once you setup neon and copy your .env.local variables, run these commands to sync your local schema with the database
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+bun run db:generate
+bun run db:push
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Environment Variables
 
-## Deploy on Vercel
+Pay close attention to the `.env.example` file, you will need to create a `.env.local` file and add the required environment variables. If there are parts of the application you don't need, you can remove those parts based on the folder structure below
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Getting Started / Folder Structure
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### Redux Toolkit
+
+path: `src/lib/store`
+
+Redux Toolkit documentation can be found [here](https://redux-toolkit.js.org/usage/nextjs)
+
+The store is setup with some simple app loading state to give you an idea how it works.
+
+path: `src/lib/store/slices/app-slice.ts`
+
+In the root `layout.tsx` file, you'll find a function called `getAppState` which pre-populates the store with a value, allowing you to get data server-side when the application loads.
+
+You can toggle this loading state on the home page.
+
+### Stripe
+
+path: `src/lib/stripe`
+
+You can sign up for a Stripe account [here](https://stripe.com/)
+
+Stripe documentation can be here [here](https://docs.stripe.com/)
+
+There are several custom functions in the `actions.ts` file
+
+1.  `updateStripeSubscription` Updates a users subscription details in Neon
+
+2.  `createCheckoutSession` Creates a checkout session for a given price ID
+
+3.  `getStripeSubscriptions` Gets all subscription products from your stripe account
+
+4.  `getActiveSubscription` Gets the active subscription for a user
+
+There is one component for managing user subscriptions using the Stripe Customer Portal `src/components/manage-subscription-button.tsx`
+
+### Lucia Auth
+
+path: `src/lib/auth`
+
+Lucia documentation can be found [here](https://lucia-auth.com/)
+
+There are several custom functions in the `actions.ts` file
+
+1.  `signUp` Signs a user up with an email/password combination
+
+2.  `signIn` Signs a user in with an email/password combination
+
+3.  `signOut` Signs a user out
+
+4.  `validateRequest` Validates a user server-side, returns a user and session if available.
+
+See `getUserAttributes` implementation details within `index.ts` for returning extra user attributes from the database
+
+There are two components with forms signing up and signing in
+
+1.  `src/components/sign-up.tsx`
+
+2.  `src/components/sign-in.tsx`
+
+### Neon/Drizzle
+
+path: `src/lib/db`
+
+You can sign up for a Neon account [here](https://neon.tech/)
+
+Drizzle documentation can be found [here](https://orm.drizzle.team/docs/overview)
+
+`index.ts` exports a simple `db` variable for interacting with the database
+
+You can define new schema types within `schema.ts`
+
+### Cloudflare R2
+
+path: `src/lib/r2`
+
+You can sign up for a Cloudflare account [here](https://www.cloudflare.com/en-gb/)
+
+R2 documentation can be found [here](https://developers.cloudflare.com/r2/)
+
+There are several custom functions in the `actions.ts` file
+
+1.  `generateFileName` Generates a filename
+
+2.  `uploadFile` Handles uploading FormData to the storage bucket.
+
+There is one component which handles the file upload `src/components/file-upload.tsx`
+
+**Note**: Cloudflare requires a credit card on file to get started with R2, the usage before you'll start to be charged is generous
+
+### Resend
+
+lib path: `src/lib/resend/index.ts`
+
+emails path: `src/emails`
+
+You can sign up for a Resend account [here](https://resend.com/)
+
+Resend documentation can be found [here](https://resend.com/docs/introduction)
+
+React Email documentation can be found [here](https://react.email/docs/introduction)
+
+Currently just set up to send verification emails, when a user signs up, you can see the implementation details in `src/lib/auth/actions.ts` in the `signUp` function.
+
+**Note**: Resend requires domain verification to send emails from an email address, so email sending will not work out of the box. You will have to setup some DNS records to get this working.
+
+## Other documentation
+
+- [Next JS](https://nextjs.org/docs/app)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [shadcn/ui](https://ui.shadcn.com/)

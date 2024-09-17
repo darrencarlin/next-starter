@@ -1,0 +1,1 @@
+ALTER TABLE "user" RENAME COLUMN "plan_name" TO "plan";
