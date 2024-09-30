@@ -15,7 +15,7 @@
     "stripe:listen": "stripe listen --forward-to localhost:3000/api/webhook/stripe"
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.651.1",
+    "@aws-sdk/client-s3": "^3.658.1",
     "@hookform/resolvers": "^3.9.0",
     "@lucia-auth/adapter-drizzle": "^1.1.0",
     "@neondatabase/serverless": "^0.9.5",
@@ -36,9 +36,9 @@
     "dotenv": "^16.4.5",
     "drizzle-orm": "^0.33.0",
     "lucia": "^3.2.0",
-    "lucide-react": "^0.441.0",
+    "lucide-react": "^0.446.0",
     "nanoid": "^5.0.7",
-    "next": "14.2.11",
+    "next": "14.2.13",
     "next-themes": "^0.3.0",
     "oslo": "^1.2.1",
     "postgres": "^3.4.4",
@@ -47,7 +47,7 @@
     "react-hook-form": "^7.53.0",
     "react-redux": "^9.1.2",
     "resend": "^4.0.0",
-    "stripe": "^16.11.0",
+    "stripe": "^16.12.0",
     "tailwind-merge": "^2.5.2",
     "tailwindcss-animate": "^1.0.7",
     "zod": "^3.23.8"
@@ -58,15 +58,15 @@
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "drizzle-kit": "^0.24.2",
-    "eslint": "9.10.0",
-    "eslint-config-next": "14.2.11",
+    "eslint": "9.11.1",
+    "eslint-config-next": "14.2.13",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-tailwindcss": "^3.17.4",
     "postcss": "^8",
     "prettier": "^3.3.3",
-    "prettier-plugin-tailwindcss": "^0.6.6",
+    "prettier-plugin-tailwindcss": "^0.6.8",
     "react-email": "3.0.1",
-    "tailwindcss": "^3.4.12",
+    "tailwindcss": "^3.4.13",
     "typescript": "^5"
   }
 }
