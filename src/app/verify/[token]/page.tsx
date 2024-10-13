@@ -1,14 +1,17 @@
-import {verifyToken} from "@/actions/verification";
 import {
   Card,
   CardDescription,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import {fetchApi} from "@/lib/utils";
+import {ResponseType} from "@/types";
 
 export default async function VerifyPage({params}: {params: {token: string}}) {
   // Verify the token
-  const {success, message} = await verifyToken(params.token);
+  const {success, message} = await fetchApi<ResponseType>(
+    "/api/verify/token/" + params.token,
+  );
 
   return (
     <div className="flex flex-1 items-center justify-center">

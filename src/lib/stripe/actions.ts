@@ -1,7 +1,5 @@
 "use server";
 
-import {db} from "@/lib/db";
-import {userTable} from "@/lib/db/schema";
 import {getErrorMessage} from "@/lib/utils";
 import type {
   ActiveSubscription,
@@ -13,6 +11,8 @@ import type {
 } from "@/types";
 import {eq} from "drizzle-orm";
 import type Stripe from "stripe";
+import db from "../db";
+import {users} from "../db/schema";
 import {stripe} from "./server";
 
 /**
@@ -66,7 +66,7 @@ export const updateStripeSubscription = async ({
   try {
     // ✅  Update the user's stripe subscription details in the database
     await db
-      .update(userTable)
+      .update(users)
       .set({
         stripeCustomerId,
         stripeSubscriptionId,
@@ -75,7 +75,7 @@ export const updateStripeSubscription = async ({
         plan,
         updatedAt: new Date(),
       })
-      .where(eq(userTable.email, email));
+      .where(eq(users.email, email));
 
     return {
       success: true,

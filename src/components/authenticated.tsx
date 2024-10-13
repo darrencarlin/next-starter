@@ -1,4 +1,4 @@
-import {validateRequest} from "@/lib/auth/actions";
+import {auth} from "@/lib/auth";
 
 interface Props {
   children: React.ReactNode;
@@ -11,9 +11,9 @@ const UnauthorizedMessage = () => (
 );
 
 export const Authenticated = async ({children}: Props) => {
-  const {user} = await validateRequest();
+  const session = await auth();
 
-  if (!user) {
+  if (!session?.user) {
     return <UnauthorizedMessage />;
   }
 

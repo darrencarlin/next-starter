@@ -1,1 +1,0 @@
-ALTER TABLE "user_preference" ALTER COLUMN "user_id" SET DATA TYPE text;

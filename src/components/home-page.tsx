@@ -25,7 +25,7 @@ export const HomePage = () => {
           Subscriptions with <strong>Stripe</strong> 💳
         </li>
         <li>
-          Authentication with <strong>Lucia Auth</strong> 🔐
+          Authentication with <strong>Auth JS</strong> 🔐
         </li>
         <li>
           Serverless Postgres Database with <strong>Neon</strong> 🐘

@@ -1,12 +1,13 @@
 import {Success} from "@/components/success";
-import {validateRequest} from "@/lib/auth/actions";
+import {auth} from "@/lib/auth";
+
 import {redirect} from "next/navigation";
 
 export default async function SuccessPage() {
-  const {user} = await validateRequest();
+  const session = await auth();
 
   // Redirect to the home page if the user is not signed in
-  if (!user) {
+  if (!session?.user) {
     return redirect("/");
   }
 

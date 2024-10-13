@@ -7,24 +7,28 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import {validateRequest} from "@/lib/auth/actions";
+import {auth} from "@/lib/auth";
+
 import {getActiveSubscription} from "@/lib/stripe/actions";
 import {redirect} from "next/navigation";
 
 export default async function ProfilePage() {
-  const {user, session} = await validateRequest();
+  const session = await auth();
 
-  if (!user) {
+  if (!session?.user) {
     return redirect("/");
   }
 
   // Get the active subscription
   const {data: activeSubscription} = await getActiveSubscription(
-    user.stripePriceId,
+    session?.user.stripePriceId,
   );
 
   // Check if the user has a subscription
-  const hasSubscription = user?.subscriptionStatus !== "";
+  const hasSubscription =
+    (session?.user?.subscriptionStatus !== null ||
+      session?.user?.subscriptionStatus !== "") &&
+    activeSubscription.name !== "";
 
   return (
     <div className="mx-auto flex max-w-3xl flex-1 flex-col items-center justify-center gap-4">
@@ -35,7 +39,7 @@ export default async function ProfilePage() {
         </CardHeader>
         <CardContent>
           <pre>
-            <code>{JSON.stringify({user, session}, null, 2)}</code>
+            <code>{JSON.stringify({session: session?.user}, null, 2)}</code>
           </pre>
         </CardContent>
       </Card>
@@ -53,7 +57,7 @@ export default async function ProfilePage() {
         </Card>
       ) : (
         <>
-          {user.verified ? (
+          {session?.user.emailVerified ? (
             <SubscriptionProductButtons />
           ) : (
             <p className="mb-4 w-fit rounded border border-dashed p-4 text-lg">

@@ -1,1 +1,0 @@
-ALTER TABLE "user" ALTER COLUMN "subscription_status" DROP DEFAULT;

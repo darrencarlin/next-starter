@@ -12,7 +12,7 @@ The aim of this starter template is to provide the bare minimum boilerplate need
 
 - Subscriptions with **Stripe** 💳
 
-- Authentication with **Lucia Auth** 🔐
+- Authentication with **Auth JS (V5)** 🔐
 
 - Serverless Postgres Database with **Neon** 🐘
 
@@ -32,7 +32,7 @@ The aim of this starter template is to provide the bare minimum boilerplate need
     emails                                   # React Email Templates
     hooks                                    # Global Hooks
     lib/                                     # Libraries
-      auth                                   # Lucia
+      auth                                   # Auth JS
       db                                     # Neon - Drizzle
       r2                                     # Cloudflare Storage
       resend                                 # Resend
@@ -115,29 +115,19 @@ There are several custom functions in the `actions.ts` file
 
 There is one component for managing user subscriptions using the Stripe Customer Portal `src/components/manage-subscription-button.tsx`
 
-### Lucia Auth
+### Auth JS
 
 path: `src/lib/auth`
 
-Lucia documentation can be found [here](https://lucia-auth.com/)
+Auth JS documentation can be found [here](https://authjs.dev/)
 
-There are several custom functions in the `actions.ts` file
+We use the database strategy so everyhing in the user table should be synced with the session via the callback in `src/lib/auth/index.ts`
 
-1.  `signUp` Signs a user up with an email/password combination
+The main function used to check the session is
 
-2.  `signIn` Signs a user in with an email/password combination
-
-3.  `signOut` Signs a user out
-
-4.  `validateRequest` Validates a user server-side, returns a user and session if available.
-
-See `getUserAttributes` implementation details within `index.ts` for returning extra user attributes from the database
-
-There are two components with forms signing up and signing in
-
-1.  `src/components/sign-up.tsx`
-
-2.  `src/components/sign-in.tsx`
+```
+const session = await auth();
+```
 
 ### Neon/Drizzle
 

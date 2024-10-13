@@ -1,1 +1,0 @@
-ALTER TABLE "user" RENAME COLUMN "status" TO "subscription_status";
