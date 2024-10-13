@@ -39,8 +39,9 @@ The aim of this starter template is to provide the bare minimum boilerplate need
       store                                  # Redux Toolkit
       stripe                                 # Stripe
       utils.ts                               # Shared Utility Functions
+      types.ts                               # Shared Types
     constants.ts                             # Share Constants
-    types.ts                                 # Shared Types
+    middleware.ts                            # Next JS Middleware
   .env.example
   .eslintrc.json                             # ESlint config
   .gitignore                                 # Git ignore
@@ -114,6 +115,8 @@ There are several custom functions in the `actions.ts` file
 4.  `getActiveSubscription` Gets the active subscription for a user
 
 There is one component for managing user subscriptions using the Stripe Customer Portal `src/components/manage-subscription-button.tsx`
+
+To listen to Webhooks from Stripe location you can run the `stripe:listen` command found in the `package.json` file
 
 ### Auth JS
 
