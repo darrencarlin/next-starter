@@ -35,7 +35,6 @@ export default async function ProfilePage() {
       <Card className="w-full">
         <CardHeader>
           <CardTitle>User</CardTitle>
-          <CardDescription>Currently Logged In User</CardDescription>
         </CardHeader>
         <CardContent>
           <pre>

@@ -5,6 +5,16 @@ import {auth} from "@/lib/auth";
 import {HomePage} from "@/components/home-page";
 import {UserPreferences} from "@/components/user-preferences";
 
+import type {Metadata} from "next";
+
+export async function generateMetadata(): Promise<Metadata> {
+  // Fetch something dynamically
+  return {
+    title: "Home Page",
+    description: "This is the home page",
+  };
+}
+
 export default async function Home() {
   const session = await auth();
 
