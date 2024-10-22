@@ -1,9 +1,10 @@
 import {Button} from "@react-email/button";
 import {Font} from "@react-email/font";
+import {Head} from "@react-email/head";
 import {Heading} from "@react-email/heading";
 import {Html} from "@react-email/html";
 import {Text} from "@react-email/text";
-import Head from "next/head";
+
 import * as React from "react";
 
 interface Props {

@@ -39,6 +39,9 @@ export const HomePage = () => {
         <li>
           Transactional Emails with <strong>Resend & React Email</strong> 📧
         </li>
+        <li>
+          Analytics with <strong>Fathom</strong> 📈
+        </li>
       </ul>
     </div>
   );

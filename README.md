@@ -178,6 +178,12 @@ Currently just set up to send verification emails, when a user signs up, you can
 
 **Note**: Resend requires domain verification to send emails from an email address, so email sending will not work out of the box. You will have to setup some DNS records to get this working.
 
+### Fathom Analytics
+
+component path: `src/components/fathom-analytics.tsx`
+
+You can sign up for a Fathom account [here](https://usefathom.com/)
+
 ## Other documentation
 
 - [Next JS](https://nextjs.org/docs/app)

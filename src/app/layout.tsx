@@ -2,6 +2,7 @@ import {Navigation} from "@/components/navigation";
 import {Toaster} from "@/components/ui/toaster";
 import StoreProvider from "@/lib/store/store-provider";
 
+import Fathom from "@/components/fathom-analytics";
 import {Loading} from "@/components/loading";
 import {ThemeProvider} from "@/components/theme-provider";
 import {Open_Sans} from "next/font/google";
@@ -28,6 +29,7 @@ export default async function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <StoreProvider appState={appState}>
         <body className={`${open.className} flex h-screen flex-col`}>
+          <Fathom />
           <ThemeProvider
             attribute="class"
             defaultTheme="system"
