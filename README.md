@@ -22,6 +22,8 @@ The aim of this starter template is to provide the bare minimum boilerplate need
 
 - Transactional Emails with **Resend & React Email** 📧
 
+- Analytics with **Fathom** 📊
+
 ## Directory Structure
 
 ```
