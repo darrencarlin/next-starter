@@ -6,6 +6,7 @@ import {HomePage} from "@/components/home-page";
 import {UserPreferences} from "@/components/user-preferences";
 
 import type {Metadata} from "next";
+import {headers} from "next/headers";
 
 export async function generateMetadata(): Promise<Metadata> {
   // Fetch something dynamically
