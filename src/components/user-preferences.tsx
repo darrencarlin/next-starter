@@ -10,7 +10,7 @@ export const UserPreferences = () => {
 
   return (
     <div className="flex flex-col">
-      <pre className="mb-4 rounded bg-neutral-100 p-4 dark:bg-neutral-900">
+      <pre className="mb-4 bg-neutral-100 p-4 dark:bg-neutral-900">
         <code>{JSON.stringify({app}, null, 2)}</code>
       </pre>
       <Button

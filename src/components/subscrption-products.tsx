@@ -2,7 +2,7 @@ import {StripeProductButton} from "@/components/stripe-product-button";
 import {getStripeSubscriptions} from "@/lib/stripe/actions";
 
 export const NoSubsrciptionProduct = () => (
-  <p className="mb-4 w-fit rounded border border-dashed p-4 text-lg">
+  <p className="mb-4 w-fit border border-dashed p-4 text-lg">
     No subscription products found
   </p>
 );

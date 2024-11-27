@@ -59,7 +59,7 @@ export default async function ProfilePage() {
           {session?.user.emailVerified ? (
             <SubscriptionProductButtons />
           ) : (
-            <p className="mb-4 w-fit rounded border border-dashed p-4 text-lg">
+            <p className="mb-4 w-fit border border-dashed p-4 text-lg">
               Please verify your email to access subscription products
             </p>
           )}
