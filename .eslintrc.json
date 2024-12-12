@@ -1,0 +1,15 @@
+{
+  "extends": [
+    "next/core-web-vitals",
+    "plugin:tailwindcss/recommended",
+    "prettier"
+  ],
+  "plugins": ["tailwindcss"],
+  "rules": {
+    "prefer-arrow-callback": "error",
+    "prefer-const": "error",
+    "tailwindcss/classnames-order": "warn",
+    "tailwindcss/no-custom-classname": "warn"
+  },
+  "ignorePatterns": ["src/components/ui/*", "src/hooks/use-toast.ts"]
+}
